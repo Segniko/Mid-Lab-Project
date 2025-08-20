@@ -414,15 +414,26 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Stack featured project card vertically on mobile */
-  .fp-card {
+  /* Stack project card vertically on mobile */
+  .project-card {
     flex-direction: column;  /* Stack children vertically */
+    padding: 1rem;
+    gap: 1rem;
   }
   
-  /* Make the project media section full width with fixed height */
-  .fp-media {
-    width: 100%;            /* Full width of container */
-    height: 120px;          /* Fixed height for consistency */
+  /* Make the project image full width with fixed height */
+  .project-image {
+    width: 100%;
+    height: 180px;          /* Fixed height for consistency */
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  /* Ensure images fill their container */
+  .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   
   /* Stack header elements vertically */
