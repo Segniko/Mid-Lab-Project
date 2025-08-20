@@ -1,0 +1,1068 @@
+/* 
+ * BASE STYLES & VARIABLES
+ * This section contains global variables and base styles that are used throughout the site.
+ * Using CSS variables for consistent theming and easy maintenance.
+ */
+:root {
+  /* Color Variables */
+  --primary: #176fd3;          /* Primary brand color for buttons, links, and accents */
+  --primary-hover: #135db0;    /* Darker shade for hover states */
+  --bg-light: #ffffff;         /* Light theme background color */
+  --bg-dark: #1a1f26;          /* Dark theme background color */
+  --text: #111418;             /* Default text color */
+  --text-light: #ffffff;       /* Light text for dark backgrounds */
+  --border: #f0f2f4;           /* Border color for elements */
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Default box shadow */
+  --transition: all 0.3s ease; /* Default transition for interactive elements */
+}
+
+/* 
+ * Dark theme overrides
+ * These styles are applied when the dark theme is active
+ */
+body[data-theme="dark"] {
+  --bg-light: #1a1f26;         /* Dark background color */
+  --text: #e9ecef;             /* Light text for dark theme */
+  --border: #2d3748;           /* Darker borders for dark theme */
+  background: var(--bg-light);  /* Apply dark background */
+  color: var(--text);          /* Apply light text color */
+}
+
+/* 
+ * Reset and base styles
+ * Removes default margins and padding. Sets box-sizing to border-box for all elements
+ */
+* {
+  margin: 0;                   /* Remove default margin */
+  padding: 0;                  /* Remove default padding */
+  box-sizing: border-box;      /* Include padding and border in element's total width/height */
+}
+
+/* Body styles */
+body {
+  font-family: "Work Sans", "Noto Sans", sans-serif; /* Font stack with fallbacks */
+  background: var(--bg-light);  /* Set background color using CSS variable */
+  color: var(--text);          /* Set text color using CSS variable */
+  line-height: 1.5;            /* Improve readability with 1.5 line height */
+  transition: var(--transition); /* Smooth theme transition */
+  min-height: 100vh;           /* Ensure body takes at least full viewport height */
+}
+
+/* Container class for centering content and setting max-width */
+.container {
+  max-width: 1200px;           /* Maximum width of the container */
+  margin: 0 auto;              /* Center the container horizontally */
+  padding: 0 1.5rem;           /* Add horizontal padding for smaller screens */
+}
+
+/* Navigation styles */
+/* Main header container */
+header {
+  display: flex;                      /* Use flexbox for layout */
+  justify-content: space-between;     /* Space items evenly */
+  align-items: center;               /* Center items vertically */
+  padding: 0.5rem 1rem;              /* Add padding around header content */
+  border-bottom: 1px solid var(--border); /* Add bottom border */
+  background: var(--bg-light);       /* Set background color */
+}
+
+/* Logo container */
+.header-logo {
+  display: flex;                      /* Use flexbox for layout */
+  align-items: center;               /* Center items vertically */
+  gap: 0.5rem;                       /* Space between logo and text */
+}
+
+/* Logo icon styling */
+.logo-icon svg {
+  width: 24px;                       /* Set icon width */
+  height: 24px;                      /* Set icon height */
+  fill: var(--primary);              /* Use primary color for the icon */
+}
+
+/* Logo text styling */
+.logo-text {
+  font-weight: 700;                  /* Bold text */
+  font-size: 1.25rem;                /* Slightly larger font size */
+  color: var(--text);                /* Use text color variable */
+  text-decoration: none;             /* Remove underline */
+}
+
+/* Navigation links container */
+.nav-links {
+  display: flex;                     /* Use flexbox for layout */
+  gap: 1.5rem;                       /* Space between navigation items */
+  list-style: none;                  /* Remove default list styling */
+}
+
+/* Navigation link styling */
+.nav-links a {
+  color: var(--text);                /* Text color */
+  text-decoration: none;             /* Remove underline */
+  font-weight: 500;                  /* Medium font weight */
+  transition: var(--transition);     /* Smooth transition for hover effects */
+  padding: 0.5rem 0;                 /* Vertical padding */
+  position: relative;                /* Position context for pseudo-elements */
+}
+
+/* Underline effect for navigation links */
+.nav-links a::after {
+  content: '';                       /* Required for pseudo-element */
+  position: absolute;                /* Position relative to parent */
+  bottom: 0;                         /* Align to bottom */
+  left: 0;                           /* Start from left */
+  width: 0;                          /* Start with 0 width */
+  height: 2px;                       /* Thickness of the underline */
+  background: var(--primary);        /* Use primary color for underline */
+  transition: var(--transition);     /* Smooth transition for width */
+}
+
+/* Hover effect for navigation links */
+.nav-links a:hover::after {
+  width: 100%;                       /* Expand underline to full width */
+}
+
+/* Active navigation link styling */
+.nav-links a.active {
+  color: var(--primary);             /* Use primary color for active link */
+}
+
+/* Show underline for active link */
+.nav-links a.active::after {
+  width: 100%;                       /* Full width underline for active link */
+}
+
+/* 
+ * THEME TOGGLE STYLES
+ * Custom toggle switch for light/dark theme
+ */
+.theme-checkbox {
+  position: absolute;   /* Remove from normal document flow */
+  left: -9999px;        /* Hide the actual checkbox off-screen */
+  opacity: 0;           /* Make it invisible but focusable */
+}
+
+/* Journey Timeline Styling */
+/* For the lists*/
+.journey-timeline {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+  position: relative;
+}
+
+.journey-timeline li strong {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Theme toggle styles */
+.theme-checkbox:checked ~ .design-root {
+  --bg-light: #1a1f26; 
+  --text: #e9ecef;
+  --border: #2d3748;
+  --primary: #2b9af3;
+  --bg-2: #1f2937;  
+  background: var(--bg-light);
+  color: var(--text);
+}
+
+.theme-checkbox:checked ~ .design-root .nav-link.theme-toggle::before {
+  content: '🌙';
+  background: var(--bg-2);
+  color: var(--text);
+}
+
+.theme-checkbox:not(:checked) ~ .design-root .nav-link.theme-toggle::before {
+  content: '☀';
+}
+
+
+body[data-theme="dark"] .nav-link.theme-toggle::before {
+  content: '🌙';
+}
+
+body[data-theme="light"] .nav-link.theme-toggle::before {
+  content: '☀';
+}
+
+/* Theme toggle position style */
+.nav-link.theme-toggle {
+  padding-top: 6px;
+}
+
+/* 
+ * BUTTON STYLES
+ * Base button styles and variants
+ */
+
+/* Base button style */
+.btn {
+  display: inline-block;           /* Allow setting width/height */
+  padding: 0.75rem 1.5rem;        /* Vertical and horizontal padding */
+  background: var(--primary);     /* Primary background color */
+  color: white;                   /* Text color */
+  text-decoration: none;          /* Remove underline */
+  border-radius: 6px;             /* Rounded corners */
+  font-weight: 600;               /* Semi-bold text */
+  transition: var(--transition);  /* Smooth transitions */
+  border: none;                   /* Remove default border */
+  cursor: pointer;                /* Show pointer cursor */
+}
+
+/* Button hover state */
+.btn:hover {
+  background: var(--primary-hover);  /* Darker shade on hover */
+  transform: translateY(-2px);       /* Slight lift effect */
+  box-shadow: var(--shadow);         /* Add shadow for depth */
+}
+
+/* HOME PAGE STYLES*/
+/* 
+ * HERO SECTION
+ * Modern layout with CSS Grid and Flexbox for better responsiveness
+ * Features a two-column layout on larger screens with a subtle pattern overlay
+ */
+.hero {
+  min-height: 80vh;                    /* Minimum 80% of viewport height */
+  display: grid;                       /* CSS Grid for the main layout */
+  grid-template-columns: 1fr;          /* Single column by default */
+  align-items: center;                 /* Vertically center content */
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Blue gradient */
+  color: white;                       /* White text for contrast */
+  padding: 4rem 2rem;                 /* Ample padding around content */
+  margin: 2rem 0;                     /* Vertical margin */
+  border-radius: 0.5rem;              /* Slightly rounded corners */
+  position: relative;                 /* For positioning pseudo-elements */
+  overflow: hidden;                   /* Hide overflowing content */
+}
+
+/* Subtle pattern overlay */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* Container for hero content */
+.hero-content {
+  max-width: 1200px;                  /* Wider container for better layout */
+  margin: 0 auto;                     /* Center the content */
+  position: relative;                 /* For z-index context */
+  z-index: 2;                        /* Ensure content stays above overlay */
+  display: grid;                      /* Nested grid for content */
+  grid-template-columns: 1fr;         /* Single column by default */
+  gap: 2rem;                         /* Space between text and visual elements */
+  width: 100%;                       /* Full width */
+  padding: 0 1rem;                   /* Side padding */
+}
+
+/* Text content container */
+.hero-text {
+  display: flex;                     /* Flexbox for vertical alignment */
+  flex-direction: column;            /* Stack children vertically */
+  justify-content: center;           /* Center content vertically */
+  max-width: 800px;                 /* Optimal line length for readability */
+}
+
+/* Main heading in hero section */
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 3.5rem); /* Responsive font size */
+  margin-bottom: 1.5rem;            /* Space below heading */
+  line-height: 1.2;                 /* Tighter line height for headings */
+  font-weight: 800;                 /* Bolder weight for impact */
+  background: linear-gradient(to right, #fff, #e0e0e0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Subheading */
+.hero h2 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Hero section paragraph text */
+.hero p {
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  margin-bottom: 2.5rem;            /* More space below paragraph */
+  opacity: 0.9;                     /* Slight transparency for better contrast */
+  max-width: 600px;                 /* Optimal line length */
+  line-height: 1.6;                 /* Better readability */
+}
+
+/* CTA button container */
+.hero-cta {
+  display: flex;                    /* Flexbox for button layout */
+  gap: 1rem;                        /* Space between buttons */
+  flex-wrap: wrap;                  /* Allow wrapping on small screens */
+  margin-top: 1rem;                 /* Space above buttons */
+}
+
+/* Responsive adjustments */
+@media (min-width: 1024px) {
+  .hero {
+    padding: 6rem 2rem;             /* More padding on larger screens */
+  }
+  
+  .hero-content {
+    grid-template-columns: 1fr 1fr;  /* Two-column layout on larger screens */
+    align-items: center;            /* Center items vertically */
+  }
+  
+  .hero-text {
+    padding-right: 2rem;            /* Space between text and visual */
+  }
+}
+
+/* 
+ * SNAPSHOT SECTION
+ * Displays key statistics in a horizontal layout
+ */
+.snapshot .snapshot-items {
+  display: flex;              /* Use flexbox for layout */
+  gap: 1.5rem;                /* Space between stat items */
+  padding: 1.5rem;            /* Inner spacing */
+  justify-content: center;    /* Center items horizontally */
+  align-items: center;        /* Center items vertically */
+}
+
+/* Individual statistic container */
+.stat {
+  text-align: center;         /* Center text alignment */
+  min-width: 100px;           /* Minimum width for consistency */
+}
+
+/* Statistic number styling */
+.stat-number {
+  font-size: 1.25rem;         /* Larger font size for emphasis */
+  font-weight: 700;           /* Bold weight for prominence */
+  color: var(--primary);      /* Use primary color for visual hierarchy */
+  display: block;             /* Ensure it's on its own line */
+  margin-bottom: 0.25rem;     /* Space between number and label */
+}
+
+/* Statistic label styling */
+.stat-label {
+  font-size: 0.9rem;          /* Slightly smaller than body text */
+  color: var(--text);         /* Use default text color */
+  opacity: 0.8;               /* Slightly transparent for subtlety */
+  display: block;             /* Ensure it's on its own line */
+}
+
+/* 
+ * FEATURED PROJECT SECTION
+ * Highlights a selected project with detailed information
+ */
+.featured-project {
+  padding: 1.5rem 0;  /* Vertical padding for section spacing */
+}
+
+/* Featured project card container */
+.fp-card {
+  display: flex;                /* Use flexbox for layout */
+  gap: 1rem;                   /* Space between media and content */
+  align-items: stretch;        /* Stretch items to match height */
+  background: var(--bg-light); /* Use theme background */
+  border: 1px solid var(--border); /* Subtle border */
+  border-radius: 8px;          /* Rounded corners */
+  overflow: hidden;            /* Hide overflowing content */
+  box-shadow: var(--shadow);   /* Add depth with shadow */
+  transition: var(--transition); /* Smooth hover effects */
+}
+
+/* Featured project media container */
+.fp-media {
+  width: 160px;  /* Fixed width for the media area */
+  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); /* Subtle blue gradient */
+  min-height: 100%; /* Ensure it stretches to full height */
+  display: flex;    /* For centering content */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+}
+
+/* Featured project content area */
+.fp-body {
+  padding: 1rem;   /* Inner spacing */
+  flex: 1;         /* Take remaining space */
+  display: flex;    /* For layout control */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* Featured project heading */
+.fp-body h3 {
+  margin-bottom: 0.5rem;  /* Space below heading */
+  font-size: 1.1rem;     /* Slightly larger than body text */
+  color: var(--text);    /* Use theme text color */
+  font-weight: 600;      /* Semi-bold for emphasis */
+}
+
+/* 
+ * RESPONSIVE DESIGN
+ * Media queries for tablet and mobile devices (max-width: 768px)
+ * Adjusts layout and spacing for smaller screens
+ */
+@media screen and (max-width: 768px) {
+  /* Stack featured project card vertically on mobile */
+  .fp-card {
+    flex-direction: column;  /* Stack children vertically */
+  }
+  
+  /* Make the project media section full width with fixed height */
+  .fp-media {
+    width: 100%;            /* Full width of container */
+    height: 120px;          /* Fixed height for consistency */
+  }
+  
+  /* Stack header elements vertically */
+  .header {
+    flex-direction: column;  /* Stack header items vertically */
+    text-align: center;     /* Center align header content */
+    gap: 1rem;              /* Add space between stacked items */
+  }
+  
+  /* Improve navigation on small screens */
+  .nav-links {
+    width: 100%;            /* Full width navigation */
+    justify-content: center; /* Center navigation items */
+    flex-wrap: wrap;        /* Allow navigation items to wrap */
+  }
+  
+  /* Adjust hero section for mobile */
+  .hero {
+    text-align: center;     /* Center align hero content */
+    padding: 2rem 1rem;     /* Adjust padding for mobile */
+  }
+  
+  /* Stack call-to-action buttons vertically */
+  .hero-cta {
+    flex-direction: column;  /* Stack buttons vertically */
+    gap: 1rem;              /* Space between stacked buttons */
+  }
+  
+  /* Make buttons full width on mobile */
+  .btn {
+    width: 100%;           /* Full width buttons */
+    text-align: center;    /* Center button text */
+  }
+}
+
+.fp-body p {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+/* 
+ * CALL-TO-ACTION (CTA) SECTION
+ * Prominent section for important calls to action
+ */
+.cta-section {
+  padding: 4rem 0;  /* Vertical padding */
+  margin: 2rem auto; /* Vertical and horizontal centering */
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Blue gradient */
+  border-radius: 0.5rem; /* Rounded corners */
+  color: white;     /* White text for contrast */
+  max-width: 1200px; /* Maximum width */
+  width: calc(100% - 2rem); /* Full width with 1rem margin on each side */
+  display: flex;    /* Flexbox for centering */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
+}
+
+/* Container for CTA content */
+.cta-content {
+  max-width: 800px;  /* Restrict width for readability */
+  width: 100%;      /* Full width of parent */
+  margin: 0 auto;   /* Center horizontally */
+  text-align: center; /* Center align text */
+  padding: 0 1.5rem; /* Horizontal padding */
+}
+
+/* CTA heading */
+.cta-content h2 {
+  font-size: 2rem;    /* Large font size */
+  margin-bottom: 1.5rem; /* Space below heading */
+  line-height: 1.3;   /* Comfortable line height */
+}
+
+/* CTA paragraph text */
+.cta-content p {
+  font-size: 1.1rem;  /* Slightly larger than body text */
+  margin-bottom: 2rem; /* Space below paragraph */
+  opacity: 0.9;       /* Slight transparency */
+  max-width: 700px;   /* Restrict width for readability */
+  margin-left: auto;  /* Center the paragraph */
+  margin-right: auto;
+}
+
+/* Container for CTA buttons */
+.cta-buttons {
+  display: flex;      /* Use flexbox for layout */
+  gap: 1rem;          /* Space between buttons */
+  justify-content: center; /* Center buttons */
+  flex-wrap: wrap;    /* Allow wrapping on small screens */
+}
+
+/* 
+ * PRIMARY BUTTON VARIANT
+ * Used for primary actions in CTA sections
+ */
+.btn-primary {
+  background: white;        /* White background */
+  color: #1e3c72;          /* Dark blue text color */
+}
+
+/* Primary button hover state */
+.btn-primary:hover {
+  background: #f0f0f0;     /* Light gray background on hover */
+  transform: translateY(-2px);  /* Slight lift effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Subtle shadow */
+}
+
+/* 
+ * ABOUT PAGE STYLES
+ * Styling for the About page layout and components
+ */
+
+/* Main container for about page sections */
+.about-section {
+  margin-bottom: 3rem;     /* Space between sections */
+  max-width: 800px;        /* Restrict width for readability */
+  margin-left: auto;       /* Center the section */
+  margin-right: auto;
+  padding: 0 1.5rem;       /* Horizontal padding */
+}
+
+/* 
+ * PROFILE SECTION
+ * Contains the main profile header and introduction
+ */
+.profile-section {
+  text-align: center;      /* Center align content */
+  margin-bottom: 3rem;     /* Space below section */
+  padding-top: 2rem;       /* Space above content */
+}
+
+/* Profile header name */
+.profile-header h1 {
+  font-size: 2.5rem;       /* Large, prominent size */
+  margin-bottom: 0.5rem;   /* Space below name */
+  color: var(--primary);   /* Primary color for emphasis */
+  font-weight: 700;        /* Bold weight */
+}
+
+/* 
+ * SECTION TITLES
+ * Styling for section headings throughout the page
+ */
+.section-title {
+  font-size: 1.75rem;      /* Larger than body text */
+  color: var(--primary);   /* Primary color */
+  margin-bottom: 1.5rem;   /* Space below title */
+  position: relative;      /* For pseudo-element positioning */
+  padding-bottom: 0.5rem;  /* Space for underline */
+  font-weight: 600;        /* Semi-bold */
+}
+
+/* Decorative underline for section titles */
+.section-title::after {
+  content: '';             /* Required for pseudo-element */
+  position: absolute;      /* Position relative to title */
+  bottom: 0;               /* Align to bottom of title */
+  left: 0;                 /* Align to left */
+  width: 60px;             /* Width of underline */
+  height: 3px;             /* Thickness of underline */
+  background: var(--primary); /* Match title color */
+  border-radius: 3px;      /* Slightly rounded corners */
+}
+
+/* 
+ * ABOUT CONTENT
+ * Styling for the main content area of the about page
+ */
+.about-content {
+  line-height: 1.7;        /* Comfortable line height for readability */
+  color: var(--text);      /* Use theme text color */
+  font-size: 1.05rem;      /* Slightly larger than default text */
+}
+
+/* Paragraph spacing in about content */
+.about-content p {
+  margin-bottom: 1.5rem;   /* Consistent vertical rhythm */
+}
+
+/* 
+ * JOURNEY TIMELINE
+ * Vertical timeline showing career/education progression
+ */
+.journey-timeline {
+  margin: 1.5rem 0 2rem 1.5rem;  /* Top, right, bottom, left margins */
+  padding: 0;                    /* Remove default padding */
+  list-style: none;              /* Remove default list styling */
+  counter-reset: timeline-counter; /* Initialize counter for timeline items */
+}
+
+/* Individual timeline item */
+.journey-timeline li {
+  position: relative;       /* For positioning the marker */
+  padding-left: 2.5rem;     /* Space for the marker */
+  margin-bottom: 1.5rem;    /* Space between items */
+  counter-increment: timeline-counter; /* Increment counter for each item */
+}
+
+/* Timeline marker (number) */
+.journey-timeline li::before {
+  content: counter(timeline-counter); /* Display the counter number */
+  position: absolute;                /* Position relative to the list item */
+  left: 0;                           /* Align to the left */
+  top: 0;                            /* Align to the top */
+  width: 2rem;                       /* Fixed width */
+  height: 2rem;                      /* Fixed height (creates a circle) */
+  background: var(--primary);        /* Primary color background */
+  color: white;                      /* White text for contrast */
+  border-radius: 50%;                /* Makes it circular */
+  display: flex;                     /* For centering the number */
+  align-items: center;               /* Vertical centering */
+  justify-content: center;           /* Horizontal centering */
+  font-size: 0.9rem;                 /* Slightly smaller font */
+  font-weight: bold;                 /* Bold number */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
+}
+
+/* 
+ * EDUCATION TABLE
+ * Responsive table for education history
+ */
+.table-responsive {
+  overflow-x: auto;      /* Enable horizontal scrolling on small screens */
+  margin: 2rem 0;        /* Vertical spacing */
+  border-radius: 8px;    /* Rounded corners */
+  box-shadow: var(--shadow); /* Consistent shadow with other components */
+  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+}
+
+.education-table {
+  width: 100%;                    /* Full width of container */
+  border-collapse: collapse;      /* Remove space between cells */
+  background: var(--bg-light);    /* Use theme background */
+  border-radius: 8px;             /* Match container border radius */
+  overflow: hidden;               /* Hide overflow for rounded corners */
+  min-width: 600px;               /* Minimum width before scrolling */
+}
+
+.education-table th,
+.education-table td {
+  padding: 1rem;               /* Comfortable cell padding */
+  text-align: left;            /* Left-align text by default */
+  border: 1px solid var(--border); /* Border color from theme */
+  vertical-align: middle;      /* Center content vertically */
+}
+
+/* Table header cells */
+.education-table th {
+  background-color: var(--primary);  /* Primary color for header */
+  color: white;                     /* White text for contrast */
+  font-weight: 600;                 /* Semi-bold text */
+  text-transform: uppercase;         /* Uppercase header text */
+  font-size: 0.8rem;                /* Smaller font size */
+  letter-spacing: 0.05em;           /* Slight letter spacing */
+  text-align: left;                 /* Left-align header text */
+  padding: 1rem 1.25rem;            /* Slightly more horizontal padding */
+}
+
+/* Zebra striping for rows */
+.education-table tbody tr:nth-child(even) {
+  background-color: rgba(0, 0, 0, 0.02);  /* Very light gray for even rows */
+}
+
+/* Hover effect for rows */
+.education-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.03);  /* Slightly darker on hover */
+  transition: background-color 0.2s ease;  /* Smooth transition */
+}
+
+/* 
+ * SKILLS SECTION
+ * Styling for the skills/proficiency section
+ */
+.skills-section {
+  margin: 1rem;  /* Consistent margin around section */
+  position: relative;  /* For positioning pseudo-elements */
+  padding: 1.5rem;  /* Inner spacing */
+  background: var(--bg-light);  /* Light background */
+  border-radius: 8px;  /* Rounded corners */
+  box-shadow: var(--shadow);  /* Consistent shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  /* Smooth transitions */
+}
+
+/* Hover effect for skills section */
+.skills-section:hover::before {
+  opacity: 1;  /* Show overlay on hover */
+  transform: scale(1);  /* Scale to full size */
+}
+
+.skills-grid {
+  display: grid;  /* Use CSS Grid for layout */
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); /* Responsive columns */
+  gap: 1.5rem;    /* Space between grid items */
+  margin-top: 2.5rem; /* Space above the grid */
+  position: relative; /* For positioning child elements */
+  padding: 0.5rem; /* Inner padding */
+}
+
+.skill-item {
+  display: flex;                  /* Use flexbox for layout */
+  flex-direction: column;        /* Stack children vertically */
+  align-items: center;          /* Center items horizontally */
+  padding: 1.5rem 1rem;         /* Inner spacing */
+  text-align: center;           /* Center text */
+  background: rgba(255, 255, 255, 0.02);  /* Slight white overlay */
+  border: 1px solid rgba(255, 255, 255, 0.1);  /* Subtle border */
+  border-radius: 8px;           /* Rounded corners */
+  transition: all 0.3s ease;    /* Smooth hover transition */
+  cursor: default;              /* Default cursor */
+  border-radius: 16px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.skill-item::before {
+  content: '';              /* Required for pseudo-element */
+  position: absolute;       /* Position relative to skill item */
+  top: 0;                   /* Align to top */
+  left: 0;                  /* Align to left */
+  right: 0;                 /* Stretch to right edge */
+  height: 100%;             /* Full height */
+  background: linear-gradient(45deg, rgba(30, 60, 114, 0.1), rgba(42, 82, 152, 0.1));
+  border-radius: 12px;      /* Match parent border radius */
+  opacity: 0;               /* Hidden by default */
+  transition: opacity 0.3s ease, transform 0.3s ease;  /* Smooth transitions */
+  z-index: -1;              /* Place behind content */
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #4a90e2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);  /* Slight lift effect */
+  background: rgba(255, 255, 255, 0.05);  /* Slightly lighter background on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);  /* Deeper shadow on hover */
+  border-color: rgba(255, 255, 255, 0.15);  /* Slightly more visible border */
+  border-color: rgba(23, 111, 211, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skill-item:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-icon {
+  width: 50px;                    /* Fixed width */
+  height: 50px;                   /* Fixed height */
+  margin-bottom: 1rem;            /* Space below icon */
+  object-fit: contain;            /* Maintain aspect ratio */
+  filter: grayscale(100%) brightness(0.8);  /* Grayscale by default */
+  transition: all 0.3s ease;      /* Smooth transitions */
+}
+
+/* Skill name text */
+.skill-name {
+  font-weight: 600;               /* Semi-bold text */
+  margin-top: 0.5rem;             /* Space above name */
+  color: var(--text);             /* Use theme text color */
+  font-size: 0.95rem;             /* Slightly larger than body text */
+  transition: color 0.3s ease;    /* Smooth color transition */
+}
+
+/* Theme toggle label and slider styling */
+.theme-label {
+  display: flex;                      /* Use flexbox for layout */
+  align-items: center;               /* Center items vertically */
+  gap: 0.5rem;                       /* Space between icon and text */
+  cursor: pointer;                   /* Show pointer cursor on hover */
+  padding: 0.5rem;                   /* Add padding around icon */
+  border-radius: 50%;                /* Make it circular */
+  transition: var(--transition);     /* Smooth transition for hover effects */
+}
+
+/* Hover effect for theme toggle */
+.theme-label:hover {
+  background: var(--border);         /* Light background on hover */
+}
+
+/* Theme toggle icon styling */
+.theme-icon {
+  width: 20px;                       /* Set icon size */
+  height: 20px;                     
+  fill: var(--text);                 /* Use text color for the icon */
+  transition: var(--transition);     /* Smooth transition for color changes */
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.skill-item {
+  animation: fadeInUp 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.skill-item span {
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Portfolio Page */
+/* 
+ * PORTFOLIO HERO SECTION
+ * Hero banner for the portfolio page
+ */
+.portfolio-hero {
+  text-align: center;           /* Center align content */
+  padding: 4rem 1rem;          /* Vertical and horizontal padding */
+  margin: 2rem 0;              /* Vertical margin */
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%); /* Gradient background */
+  color: white;                /* White text for contrast */
+  border-radius: 0.5rem;       /* Rounded corners */
+  position: relative;          /* For positioning pseudo-elements */
+  overflow: hidden;            /* Hide overflow for rounded corners */
+}
+
+/* Portfolio hero heading */
+.portfolio-hero h1 {
+  font-size: 2.5rem;           /* Large heading size */
+  margin-bottom: 1rem;         /* Space below heading */
+  font-weight: 700;            /* Bold weight */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Text shadow for better readability */
+}
+
+/* Portfolio hero paragraph */
+.portfolio-hero p {
+  font-size: 1.25rem;          /* Slightly larger than body text */
+  opacity: 0.9;                /* Slight transparency */
+  max-width: 600px;            /* Restrict width for readability */
+  margin: 0 auto;              /* Center the paragraph */
+  line-height: 1.6;            /* Comfortable line height */
+}
+
+/* 
+ * PORTFOLIO SECTION
+ * Container for the portfolio projects grid
+ */
+.portfolio-section {
+  margin: 4rem 0;      /* Vertical spacing */
+  padding: 0 1rem;     /* Horizontal padding */
+  max-width: 1200px;   /* Maximum width for content */
+  margin-left: auto;    /* Center the section */
+  margin-right: auto;
+}
+
+/* 
+ * PROJECTS GRID
+ * Grid layout for portfolio projects
+ */
+.projects-grid {
+  display: grid;                      /* Use CSS Grid */
+  grid-template-columns: 1fr;         /* Single column by default */
+  gap: 2rem;                         /* Space between grid items */
+  margin-top: 2rem;                  /* Space above grid */
+  width: 100%;                       /* Full width of container */
+}
+
+/* 
+ * PROJECT CARD
+ * Styling for individual project cards in the portfolio
+ */
+.project-card {
+  background: rgba(255, 255, 255, 0.02);  /* Semi-transparent background */
+  border-radius: 16px;                   /* Rounded corners */
+  overflow: hidden;                      /* Clip content to border radius */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth transitions */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Subtle border */
+  backdrop-filter: blur(10px);           /* Frosted glass effect */
+  position: relative;                    /* For absolute positioning of children */
+  height: 100%;                         /* Full height of grid cell */
+  position: relative;
+  height: 100%;
+}
+
+.project-card::before {
+  content: '';  /* Required for pseudo-element */
+  position: absolute;  /* Position relative to card */
+  top: 0;  /* Align to top */
+  left: 0;  /* Align to left */
+  right: 0;  /* Stretch to right */
+  height: 4px;  /* Thin line */
+  background: linear-gradient(90deg, var(--primary), #4a90e2); /* Gradient overlay */
+  transform: scaleX(0);  /* Hidden by default */
+  transform-origin: left;  /* Scale from left */
+  transition: transform 0.4s ease;  /* Smooth transition */
+}
+
+/* Card hover effects */
+.project-card:hover {
+  transform: translateY(-8px);  /* Slight lift */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);  /* Deeper shadow */
+  border-color: rgba(23, 111, 211, 0.3);  /* Brighter border on hover */
+  cursor: pointer;  /* Indicate interactivity */
+}
+
+/* Show gradient overlay on hover */
+.project-card:hover::before {
+  transform: scaleX(1);  /* Fade in gradient */
+}
+
+/* 
+ * FEATURED PROJECT CARD
+ * Special styling for featured projects that span full width
+ */
+.project-card.featured {
+  grid-column: 1 / -1;  /* Span all columns */
+  display: grid;  /* Nested grid for content */
+  grid-template-columns: 1.1fr 0.9fr;  /* Two-column layout */
+  max-width: 1200px;  /* Maximum width */
+  margin: 0 auto;  /* Center the card */
+  position: relative;  /* For positioning children */
+  overflow: visible;  /* Allow content to overflow */
+}
+
+/* 
+ * PROJECT IMAGE CONTAINER
+ * Container for project images with hover effects
+ */
+.project-image {
+  position: relative;  /* For absolute positioning of children */
+  overflow: hidden;    /* Hide overflow for animations */
+  min-height: 300px;   /* Minimum height */
+  background: rgba(0, 0, 0, 0.05);  /* Subtle background */
+  transition: transform 0.3s ease;  /* Smooth hover effect */
+}
+
+/* Project image styling */
+.project-image img {
+  width: 100%;
+  height: 95%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth hover effect */
+  will-change: transform;
+}
+
+.project-card:hover .project-image img {
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.project-content {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.05)
+  );
+}
+
+/*For the project content & The Blue Color underlining the Project name*/
+.project-content h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  position: relative;
+}
+
+.project-content h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 50px;
+  height: 3px;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.project-card:hover .project-content h3::after {
+  width: 80px;
+}
+
+.project-content p {
+  color: var(--text);
+  opacity: 0.9;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap to the next line */
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-stack span {
+  background: rgba(23, 111, 211, 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.project-links {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Contact Page */
+.contact-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: var(--bg-light); /* Adds background color */
+  border: 1px solid var(--border); /* Adds border */
+  border-radius: 0.5rem; /* Adds rounded corners */
+  box-shadow: var(--shadow); /* Adds shadow */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border); /* Adds border */
+  border-radius: 0.375rem; /* Adds rounded corners */
+  font-family: inherit; /* Inherit font from parent */
+  background: var(--bg-light);
+  color: var(--text);
+}
