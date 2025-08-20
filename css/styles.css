@@ -366,46 +366,151 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 
 /* FEATURED PROJECT SECTION */
 .featured-project {
-  padding: 1.5rem 0;  /* Vertical padding for section spacing */
+  padding: 1.5rem 0;
 }
 
-/* Featured project card container */
+/* Base card styles */
 .fp-card {
-  display: flex;                /* Use flexbox for layout */
-  gap: 1rem;                   /* Space between media and content */
-  align-items: stretch;        /* Stretch items to match height */
-  background: var(--bg-light); /* Use theme background */
-  border: 1px solid var(--border); /* Subtle border */
-  border-radius: 8px;          /* Rounded corners */
-  overflow: hidden;            /* Hide overflowing content */
-  box-shadow: var(--shadow);   /* Add depth with shadow */
-  transition: var(--transition); /* Smooth hover effects */
+  display: flex;
+  flex-direction: column; /* Stack vertically on mobile */
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: var(--transition);
+  height: 100%;
 }
 
-/* Featured project media container */
+/* Media container */
 .fp-media {
-  width: 160px;  /* Fixed width for the media area */
-  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); /* Subtle blue gradient */
-  min-height: 100%; /* Ensure it stretches to full height */
-  display: flex;    /* For centering content */
-  align-items: center; /* Vertical centering */
-  justify-content: center; /* Horizontal centering */
+  position: relative;
+  width: 100%;
+  height: 180px; /* Fixed height for mobile */
+  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Featured project content area */
+/* Project image */
+.fp-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* Content area */
 .fp-body {
-  padding: 1rem;   /* Inner spacing */
-  flex: 1;         /* Take remaining space */
-  display: flex;    /* For layout control */
-  flex-direction: column; /* Stack children vertically */
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-/* Featured project heading */
+/* Project title */
 .fp-body h3 {
-  margin-bottom: 0.5rem;  /* Space below heading */
-  font-size: 1.1rem;     /* Slightly larger than body text */
-  color: var(--text);    /* Use theme text color */
-  font-weight: 600;      /* Semi-bold for emphasis */
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--text);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Project description */
+.fp-body p {
+  color: var(--text);
+  opacity: 0.9;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+/* Tech stack tags */
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tech-tag {
+  background: rgba(23, 111, 211, 0.1);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Action buttons */
+.fp-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: auto;
+}
+
+.fp-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.fp-link.primary {
+  background: var(--primary);
+  color: white;
+}
+
+.fp-link.secondary {
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+/* Hover effects */
+.fp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.fp-card:hover .fp-media img {
+  transform: scale(1.05);
+}
+
+.fp-link.primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.fp-link.secondary:hover {
+  background: rgba(0, 0, 0, 0.02);
+  transform: translateY(-1px);
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .fp-card {
+    flex-direction: row;
+    min-height: 220px;
+  }
+  
+  .fp-media {
+    width: 200px;
+    height: auto;
+    min-height: 100%;
+  }
+  
+  .fp-body {
+    padding: 1.5rem;
+  }
 }
 
 /* 
@@ -414,15 +519,43 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Stack featured project card vertically on mobile */
   .fp-card {
-    flex-direction: column;  /* Stack children vertically */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
   }
   
-  /* Make the project media section full width with fixed height */
   .fp-media {
-    width: 100%;            /* Full width of container */
-    height: 120px;          /* Fixed height for consistency */
+    height: 160px;
+    border-radius: 0;
+  }
+  
+  .fp-body {
+    padding: 1.25rem;
+  }
+  
+  .fp-body h3 {
+    font-size: 1.3rem;
+  }
+  
+  .fp-body p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+  
+  .tech-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .fp-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .fp-link {
+    justify-content: center;
+    padding: 0.6rem;
   }
   
   /* Stack header elements vertically */
@@ -1084,59 +1217,21 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   transition: transform 0.3s ease;  /* Smooth hover effect */
 }
 
-/* Featured Projects Section */
-.portfolio-section {
-  padding: 2rem 1rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-/* Project Card */
-.project-card.featured {
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card.featured:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-}
-
-/* Project Image */
-.project-image {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
+/* Project image styling */
 .project-image img {
   width: 100%;
-  height: 100%;
+  height: 95%;
   object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.project-card.featured:hover .project-image img {
-  transform: scale(1.05);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); /* Smooth hover effect */
+  will-change: transform;
 }
 
 .project-card:hover .project-image img {
   transform: scale(1.05); /* Slight zoom on hover */
 }
 
-/* Project Content */
 .project-content {
-  padding: 1.5rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
