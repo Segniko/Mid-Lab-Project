@@ -432,28 +432,47 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
     word-wrap: break-word;   
   }
   
-  /* Hide project images on mobile */
+  /* Show mobile screenshots on mobile and hide desktop screenshots */
   .project-image {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    overflow: hidden;
+    height: auto;
+    min-height: auto;
+    background: transparent;
+  }
+  
+  .desktop-screenshot {
     display: none;
+  }
+  
+  .mobile-screenshot {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    max-width: 100%;
+    margin: 0 auto;
   }
   
   /* Stack header elements vertically */
   .header {
-    flex-direction: column;  /* Stack header items vertically */
-    text-align: center;     /* Center align header content */
-    gap: 1rem;              /* Add space between stacked items */
+    flex-direction: column;  
+    text-align: center;     
+    gap: 1rem;              
   }
   
   /* Improve navigation on small screens */
   .nav-links {
-    width: 100%;            /* Full width navigation */
-    justify-content: center; /* Center navigation items */
-    flex-wrap: wrap;        /* Allow navigation items to wrap */
+    width: 100%;            
+    justify-content: center; 
+    flex-wrap: wrap;        
   }
   
   /* Adjust hero section for mobile */
   .hero {
-    text-align: center;     /* Center align hero content */
+    text-align: center;     
     padding: 2rem 1rem;     /* Adjust padding for mobile */
   }
   
@@ -465,8 +484,8 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   
   /* Make buttons full width on mobile */
   .btn {
-    width: 100%;           /* Full width buttons */
-    text-align: center;    /* Center button text */
+    width: 100%;           
+    text-align: center;  
   }
 }
 
@@ -1091,7 +1110,27 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   transition: transform 0.3s ease;  /* Smooth hover effect */
 }
 
-/* Project image styling */
+.project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+/* Hide mobile screenshots on desktop by default */
+.mobile-screenshot {
+  display: none;
+}
+
+/* Show desktop screenshots on desktop */
+.desktop-screenshot {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .project-image img {
   width: 100%;
   height: 95%;
