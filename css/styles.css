@@ -414,33 +414,26 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Stack and improve featured project card on mobile */
+  /* Compact featured project card for mobile */
   .fp-card {
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem;
+    padding: 0.75rem;       /* Reduced padding */
+    gap: 0.75rem;           /* Reduced gap between elements */
   }
   
-  /* Improve project media section for mobile */
+  /* More compact project media section */
   .fp-media {
     width: 100%;
-    height: 200px;          /* Increased height for better visibility */
-    border-radius: 8px;     /* Rounded corners */
+    height: 100px;          /* Reduced height */
+    border-radius: 6px;     /* Slightly rounded corners */
     overflow: hidden;       /* Ensure image stays within bounds */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Subtle shadow */
   }
   
-  /* Ensure images fill the container properly */
+  /* Ensure image fills container properly */
   .fp-media img {
     width: 100%;
     height: 100%;
-    object-fit: cover;      /* Cover the container while maintaining aspect ratio */
-    transition: transform 0.3s ease;
-  }
-  
-  /* Add hover effect for better interactivity */
-  .fp-media:hover img {
-    transform: scale(1.03); /* Slight zoom on hover */
+    object-fit: cover;      /* Maintain aspect ratio */
   }
   
   /* Stack header elements vertically */
@@ -699,40 +692,37 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 /* Mobile-friendly table styles */
 @media screen and (max-width: 768px) {
   .table-responsive {
-    width: 100%;
     overflow-x: visible;
     box-shadow: none;
     background: transparent;
-    margin: 1rem 0;
   }
   
   .education-table {
-    display: flex;
-    flex-direction: column;
+    display: block;
     min-width: 100%;
     background: transparent;
-    border-collapse: separate;
-    border-spacing: 0 1rem;
   }
   
   .education-table thead {
-    display: none;
+    display: none; /* Hide table headers on mobile */
   }
   
-  .education-table tbody {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  .education-table tbody, 
+  .education-table tr, 
+  .education-table td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem;
   }
   
   .education-table tr {
-    display: flex;
-    flex-direction: column;
-    background: var(--bg-light);
+    margin-bottom: 1.5rem;
     border: 1px solid var(--border);
     border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-light);
     box-shadow: var(--shadow);
-    padding: 1rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
   
@@ -742,31 +732,29 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   }
   
   .education-table td {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 0.5rem 0;
-    border: none;
-    min-height: auto;
     position: relative;
+    padding: 1rem 1rem 1rem 45%;
+    border-bottom: 1px solid var(--border);
+    min-height: 3.5rem; /* Ensure minimum height for better spacing */
+    display: flex;
+    align-items: center; /* Vertically center content */
+  }
+  
+  .education-table td:last-child {
+    border-bottom: none;
   }
   
   .education-table td::before {
     content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 35%;
     font-weight: 600;
     color: var(--primary);
-    margin-bottom: 0.25rem;
-    font-size: 0.85rem;
-    position: static;
-    width: 100%;
-    padding: 0;
-  }
-  
-  /* Remove bottom border from all except last cell */
-  .education-table td:not(:last-child) {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
-    margin-bottom: 0.5rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
   
   /* Add data-labels for mobile view */
