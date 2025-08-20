@@ -1,7 +1,6 @@
 /* 
- * BASE STYLES & VARIABLES
- * This section contains global variables and base styles that are used throughout the site.
- * Using CSS variables for consistent theming and easy maintenance.
+ * Base Styles & Variables
+ * This section contains global variables and base styles that are used throughout the website.
  */
 :root {
   /* Color Variables */
@@ -16,36 +15,43 @@
   --transition: all 0.3s ease; /* Default transition for interactive elements */
 }
 
-/* 
- * Dark theme overrides
- * These styles are applied when the dark theme is active
- */
-body[data-theme="dark"] {
-  --bg-light: #1a1f26;         /* Dark background color */
-  --text: #e9ecef;             /* Light text for dark theme */
-  --border: #2d3748;           /* Darker borders for dark theme */
-  background: var(--bg-light);  /* Apply dark background */
-  color: var(--text);          /* Apply light text color */
+/* Dark theme overrides */
+body[data-theme="dark"],
+body[data-theme="dark"] .design-root,
+body[data-theme="dark"] .layout-container,
+body[data-theme="dark"] .main-content {
+  --bg-light: #1a1f26;         
+  --text: #e9ecef;             
+  --border: #2d3748;           
+  background: var(--bg-light);  
+  color: var(--text);          
+  min-height: 100vh;           
 }
 
-/* 
- * Reset and base styles
- * Removes default margins and padding. Sets box-sizing to border-box for all elements
- */
+/* Reset and base styles */
 * {
   margin: 0;                   /* Remove default margin */
   padding: 0;                  /* Remove default padding */
   box-sizing: border-box;      /* Include padding and border in element's total width/height */
 }
 
+/* Body and root elements */
+html, body, .design-root, .layout-container, .main-content {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 /* Body styles */
 body {
-  font-family: "Work Sans", "Noto Sans", sans-serif; /* Font stack with fallbacks */
-  background: var(--bg-light);  /* Set background color using CSS variable */
-  color: var(--text);          /* Set text color using CSS variable */
-  line-height: 1.5;            /* Improve readability with 1.5 line height */
-  transition: var(--transition); /* Smooth theme transition */
-  min-height: 100vh;           /* Ensure body takes at least full viewport height */
+  font-family: "Work Sans", "Noto Sans", sans-serif; /* Different font styles for UI/UX purpose*/
+  background: var(--bg-light);  
+  color: var(--text);          
+  line-height: 1.5;            
+  transition: var(--transition); 
+  min-height: 100vh;           
+  display: flex;
+  flex-direction: column;
 }
 
 /* Container class for centering content and setting max-width */
@@ -56,7 +62,6 @@ body {
 }
 
 /* Navigation styles */
-/* Main header container */
 header {
   display: flex;                      /* Use flexbox for layout */
   justify-content: space-between;     /* Space items evenly */
@@ -132,10 +137,7 @@ header {
   width: 100%;                       /* Full width underline for active link */
 }
 
-/* 
- * THEME TOGGLE STYLES
- * Custom toggle switch for light/dark theme
- */
+/* Theme toggle switch for light/dark theme */
 .theme-checkbox {
   position: absolute;   /* Remove from normal document flow */
   left: -9999px;        /* Hide the actual checkbox off-screen */
@@ -191,12 +193,20 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   padding-top: 6px;
 }
 
-/* 
- * BUTTON STYLES
- * Base button styles and variants
- */
+/* Button styles */
+.btn {
+  display: inline-block;           /* Allow setting width/height */
+  padding: 0.75rem 1.5rem;        /* Vertical and horizontal padding */
+  background: var(--primary);     /* Primary background color */
+  color: white;                 /* Text color */
+  text-decoration: none;          /* Remove underline */
+  border-radius: 6px;             /* Rounded corners */
+  font-weight: 600;               /* Semi-bold text */
+  transition: var(--transition);  /* Smooth transitions */
+  border: none;                   /* Remove default border */
+  cursor: pointer;                /* Show pointer cursor */
+}
 
-/* Base button style */
 .btn {
   display: inline-block;           /* Allow setting width/height */
   padding: 0.75rem 1.5rem;        /* Vertical and horizontal padding */
@@ -218,11 +228,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 /* HOME PAGE STYLES*/
-/* 
- * HERO SECTION
- * Modern layout with CSS Grid and Flexbox for better responsiveness
- * Features a two-column layout on larger screens with a subtle pattern overlay
- */
+/*  HERO SECTION */
 .hero {
   min-height: 80vh;                    /* Minimum 80% of viewport height */
   display: grid;                       /* CSS Grid for the main layout */
@@ -326,10 +332,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   }
 }
 
-/* 
- * SNAPSHOT SECTION
- * Displays key statistics in a horizontal layout
- */
+/* SNAPSHOT SECTION */
 .snapshot .snapshot-items {
   display: flex;              /* Use flexbox for layout */
   gap: 1.5rem;                /* Space between stat items */
@@ -361,10 +364,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   display: block;             /* Ensure it's on its own line */
 }
 
-/* 
- * FEATURED PROJECT SECTION
- * Highlights a selected project with detailed information
- */
+/* FEATURED PROJECT SECTION */
 .featured-project {
   padding: 1.5rem 0;  /* Vertical padding for section spacing */
 }
@@ -463,10 +463,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   color: var(--text);
 }
 
-/* 
- * CALL-TO-ACTION (CTA) SECTION
- * Prominent section for important calls to action
- */
+/* Call To Action (CTA) SECTION */
 .cta-section {
   padding: 4rem 0;  /* Vertical padding */
   margin: 2rem auto; /* Vertical and horizontal centering */
@@ -514,10 +511,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   flex-wrap: wrap;    /* Allow wrapping on small screens */
 }
 
-/* 
- * PRIMARY BUTTON VARIANT
- * Used for primary actions in CTA sections
- */
+/* Primary Button Variant */
 .btn-primary {
   background: white;        /* White background */
   color: #1e3c72;          /* Dark blue text color */
@@ -530,11 +524,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);  /* Subtle shadow */
 }
 
-/* 
- * ABOUT PAGE STYLES
- * Styling for the About page layout and components
- */
-
+/* About Page Styles */
 /* Main container for about page sections */
 .about-section {
   margin-bottom: 3rem;     /* Space between sections */
@@ -544,10 +534,48 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   padding: 0 1.5rem;       /* Horizontal padding */
 }
 
-/* 
- * PROFILE SECTION
- * Contains the main profile header and introduction
- */
+/* Profile Photo Styles */
+.profile-photo-container {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--primary);
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-photo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive adjustments for profile photo */
+@media (max-width: 768px) {
+  .profile-photo-container {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-photo-container {
+    width: 100px;
+    height: 100px;
+    border-width: 3px;
+  }
+}
+
+/*Profile Name Section*/
 .profile-section {
   text-align: center;      /* Center align content */
   margin-bottom: 3rem;     /* Space below section */
@@ -562,10 +590,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   font-weight: 700;        /* Bold weight */
 }
 
-/* 
- * SECTION TITLES
- * Styling for section headings throughout the page
- */
+/* SECTION TITLES*/
 .section-title {
   font-size: 1.75rem;      /* Larger than body text */
   color: var(--primary);   /* Primary color */
@@ -587,10 +612,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   border-radius: 3px;      /* Slightly rounded corners */
 }
 
-/* 
- * ABOUT CONTENT
- * Styling for the main content area of the about page
- */
+/* Who AM I section */
 .about-content {
   line-height: 1.7;        /* Comfortable line height for readability */
   color: var(--text);      /* Use theme text color */
@@ -602,10 +624,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   margin-bottom: 1.5rem;   /* Consistent vertical rhythm */
 }
 
-/* 
- * JOURNEY TIMELINE
- * Vertical timeline showing career/education progression
- */
+/* Journey Timeline */
 .journey-timeline {
   margin: 1.5rem 0 2rem 1.5rem;  /* Top, right, bottom, left margins */
   padding: 0;                    /* Remove default padding */
@@ -630,7 +649,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   width: 2rem;                       /* Fixed width */
   height: 2rem;                      /* Fixed height (creates a circle) */
   background: var(--primary);        /* Primary color background */
-  color: white;                      /* White text for contrast */
+  color: white;                    /* White text for contrast */
   border-radius: 50%;                /* Makes it circular */
   display: flex;                     /* For centering the number */
   align-items: center;               /* Vertical centering */
@@ -640,31 +659,97 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for depth */
 }
 
-/* 
- * EDUCATION TABLE
- * Responsive table for education history
- */
+/* Education Table */
 .table-responsive {
-  overflow-x: auto;      /* Enable horizontal scrolling on small screens */
-  margin: 2rem 0;        /* Vertical spacing */
-  border-radius: 8px;    /* Rounded corners */
-  box-shadow: var(--shadow); /* Consistent shadow with other components */
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  width: 100%;
+  overflow-x: auto;
+  margin: 2rem 0;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  -webkit-overflow-scrolling: touch;
+  background: var(--bg-light);
 }
 
 .education-table {
-  width: 100%;                    /* Full width of container */
-  border-collapse: collapse;      /* Remove space between cells */
-  background: var(--bg-light);    /* Use theme background */
-  border-radius: 8px;             /* Match container border radius */
-  overflow: hidden;               /* Hide overflow for rounded corners */
-  min-width: 600px;               /* Minimum width before scrolling */
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--bg-light);
+  border-radius: 8px;
+  min-width: 600px; /* Minimum width before horizontal scroll appears */
 }
 
+/* Mobile-friendly table styles */
+@media screen and (max-width: 768px) {
+  .table-responsive {
+    overflow-x: visible;
+    box-shadow: none;
+    background: transparent;
+  }
+  
+  .education-table {
+    display: block;
+    min-width: 100%;
+    background: transparent;
+  }
+  
+  .education-table thead {
+    display: none; /* Hide table headers on mobile */
+  }
+  
+  .education-table tbody, 
+  .education-table tr, 
+  .education-table td {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 0.75rem;
+  }
+  
+  .education-table tr {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--bg-light);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .education-table tr:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .education-table td {
+    position: relative;
+    padding-left: 40%;
+    border-bottom: 1px solid var(--border);
+  }
+  
+  .education-table td:last-child {
+    border-bottom: none;
+  }
+  
+  .education-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 1rem;
+    width: 35%;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  /* Add data-labels for mobile view */
+  .education-table td:nth-of-type(1)::before { content: "Year"; }
+  .education-table td:nth-of-type(2)::before { content: "Institution"; }
+  .education-table td:nth-of-type(3)::before { content: "Key Skills"; }
+}
+
+/* Table cells */
 .education-table th,
 .education-table td {
-  padding: 1rem;               /* Comfortable cell padding */
-  text-align: left;            /* Left-align text by default */
+  padding: 1rem;              
+  text-align: left;            
   border: 1px solid var(--border); /* Border color from theme */
   vertical-align: middle;      /* Center content vertically */
 }
@@ -692,10 +777,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   transition: background-color 0.2s ease;  /* Smooth transition */
 }
 
-/* 
- * SKILLS SECTION
- * Styling for the skills/proficiency section
- */
+/* Skills Section */
 .skills-section {
   margin: 1rem;  /* Consistent margin around section */
   position: relative;  /* For positioning pseudo-elements */
@@ -722,16 +804,16 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 .skill-item {
-  display: flex;                  /* Use flexbox for layout */
-  flex-direction: column;        /* Stack children vertically */
-  align-items: center;          /* Center items horizontally */
-  padding: 1.5rem 1rem;         /* Inner spacing */
-  text-align: center;           /* Center text */
-  background: rgba(255, 255, 255, 0.02);  /* Slight white overlay */
-  border: 1px solid rgba(255, 255, 255, 0.1);  /* Subtle border */
-  border-radius: 8px;           /* Rounded corners */
-  transition: all 0.3s ease;    /* Smooth hover transition */
-  cursor: default;              /* Default cursor */
+  display: flex;                 
+  flex-direction: column;        
+  align-items: center;          
+  padding: 1.5rem 1rem;         
+  text-align: center;           
+  background: rgba(255, 255, 255, 0.02);  
+  border: 1px solid rgba(255, 255, 255, 0.1);  
+  border-radius: 8px;           
+  transition: all 0.3s ease;    
+  cursor: default;              
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
@@ -769,8 +851,8 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 .skill-icon {
-  width: 50px;                    /* Fixed width */
-  height: 50px;                   /* Fixed height */
+  width: 50px;                   
+  height: 50px;                   
   margin-bottom: 1rem;            /* Space below icon */
   object-fit: contain;            /* Maintain aspect ratio */
   filter: grayscale(100%) brightness(0.8);  /* Grayscale by default */
@@ -788,7 +870,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 
 /* Theme toggle label and slider styling */
 .theme-label {
-  display: flex;                      /* Use flexbox for layout */
+  display: flex;                     /* Use flexbox for layout */
   align-items: center;               /* Center items vertically */
   gap: 0.5rem;                       /* Space between icon and text */
   cursor: pointer;                   /* Show pointer cursor on hover */
@@ -799,15 +881,15 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 
 /* Hover effect for theme toggle */
 .theme-label:hover {
-  background: var(--border);         /* Light background on hover */
+  background: var(--border);         /*Light background on hover */
 }
 
 /* Theme toggle icon styling */
 .theme-icon {
-  width: 20px;                       /* Set icon size */
+  width: 20px;                       
   height: 20px;                     
-  fill: var(--text);                 /* Use text color for the icon */
-  transition: var(--transition);     /* Smooth transition for color changes */
+  fill: var(--text);                 
+  transition: var(--transition);     
 }
 
 /* Animation */
@@ -825,19 +907,65 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 .skill-item {
   animation: fadeInUp 0.6s ease-out forwards;
   opacity: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), #4a90e2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-color: rgba(23, 111, 211, 0.3);
+}
+
+.skill-item:hover::before {
+  transform: scaleX(1);
+}
+
+.skill-icon {
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+  transform: scale(1.1);
 }
 
 .skill-item span {
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-align: center;
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
 }
 
 /* Portfolio Page */
-/* 
- * PORTFOLIO HERO SECTION
- * Hero banner for the portfolio page
- */
 .portfolio-hero {
   text-align: center;           /* Center align content */
   padding: 4rem 1rem;          /* Vertical and horizontal padding */
@@ -866,10 +994,6 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   line-height: 1.6;            /* Comfortable line height */
 }
 
-/* 
- * PORTFOLIO SECTION
- * Container for the portfolio projects grid
- */
 .portfolio-section {
   margin: 4rem 0;      /* Vertical spacing */
   padding: 0 1rem;     /* Horizontal padding */
@@ -878,22 +1002,16 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   margin-right: auto;
 }
 
-/* 
- * PROJECTS GRID
- * Grid layout for portfolio projects
- */
+/* Grid layout for portfolio projects */
 .projects-grid {
-  display: grid;                      /* Use CSS Grid */
+  display: grid;                      /* CSS Grid */
   grid-template-columns: 1fr;         /* Single column by default */
   gap: 2rem;                         /* Space between grid items */
   margin-top: 2rem;                  /* Space above grid */
   width: 100%;                       /* Full width of container */
 }
 
-/* 
- * PROJECT CARD
- * Styling for individual project cards in the portfolio
- */
+/* PROJECT CARD */
 .project-card {
   background: rgba(255, 255, 255, 0.02);  /* Semi-transparent background */
   border-radius: 16px;                   /* Rounded corners */
@@ -934,10 +1052,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   transform: scaleX(1);  /* Fade in gradient */
 }
 
-/* 
- * FEATURED PROJECT CARD
- * Special styling for featured projects that span full width
- */
+/* FEATURED PROJECT CARD */
 .project-card.featured {
   grid-column: 1 / -1;  /* Span all columns */
   display: grid;  /* Nested grid for content */
@@ -948,15 +1063,12 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   overflow: visible;  /* Allow content to overflow */
 }
 
-/* 
- * PROJECT IMAGE CONTAINER
- * Container for project images with hover effects
- */
+/* PROJECT IMAGE CONTAINER */
 .project-image {
-  position: relative;  /* For absolute positioning of children */
-  overflow: hidden;    /* Hide overflow for animations */
-  min-height: 300px;   /* Minimum height */
-  background: rgba(0, 0, 0, 0.05);  /* Subtle background */
+  position: relative;  
+  overflow: hidden;    
+  min-height: 300px;   
+  background: rgba(0, 0, 0, 0.05);  
   transition: transform 0.3s ease;  /* Smooth hover effect */
 }
 
