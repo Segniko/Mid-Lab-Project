@@ -414,50 +414,34 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Mobile card layout */
+  /* Stack project card vertically on mobile */
   .project-card {
-    display: flex;
-    flex-direction: column;
-    background: var(--card-bg);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    margin-bottom: 1.5rem;
-    padding: 0;
+    flex-direction: column;  /* Stack children vertically */
+    padding: 0.75rem;      /* Reduced from 1rem */
+    gap: 0.25rem;          /* Reduced from 0.5rem */
+    text-align: left;      /* Ensure text is left-aligned */
   }
   
-  /* Project content styles */
-  .project-content {
-    padding: 1rem;
-  }
-
-  .project-card h3 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0;
-    color: var(--text);
-  }
-
+  /* Style project descriptions to match about content */
   .project-card p {
-    line-height: 1.5;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin: 0.5rem 0 1rem;
+    line-height: 1.5;        /* Tighter line height */
+    color: var(--text);      
+    font-size: 0.95rem;      /* Slightly smaller font */
+    margin-bottom: 0.5rem;   /* Reduced bottom margin */
+    white-space: normal;     
+    word-wrap: break-word;   
   }
   
-  /* Project image container */
+  /* Show mobile screenshots on mobile and hide desktop screenshots */
   .project-image {
     width: 100%;
-    height: 180px;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
     overflow: hidden;
-    position: relative;
+    height: auto;
+    min-height: auto;
+    background: transparent;
   }
-  
-  .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-    
   .mobile-screenshot {
     display: block;
     width: 100%;
