@@ -1,6 +1,11 @@
 # Personal Portfolio
 A modern, responsive portfolio website showcasing my skills, projects, and professional journey as a Full Stack Developer.
 
+# Small Preview:
+
+<img width="1350" height="594" alt="image" src="https://github.com/user-attachments/assets/9a2c4141-a30f-47f2-ad2f-7be2edaf4e0e" />
+
+
 ## 🌟 Features
 
 - **Responsive Design**: Fully responsive layout that works on all devices
@@ -22,7 +27,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and profe
 
 ```
 ├── css/
-│   └── styles.css          # Main stylesheet
+│   └── styles.css         # Main stylesheet
 ├── images/                # Project images and assets
 ├── about.html             # About me page
 ├── contact.html           # Contact form page
