@@ -417,17 +417,21 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   /* Stack project card vertically on mobile */
   .project-card {
     flex-direction: column;  /* Stack children vertically */
-    padding: 0.75rem;      /* Reduced from 1rem */
-    gap: 0.25rem;          /* Reduced from 0.5rem */
-    text-align: left;      /* Ensure text is left-aligned */
+    padding: 0.5rem;      /* Reduced from 1rem */
+    gap: 0.2rem;          /* Reduced vertical gap */
+    text-align: left;     /* Ensure text is left-aligned */
+    margin-bottom: 0.5rem; /* Space between cards */
   }
   
   /* Style project descriptions to match about content */
   .project-card p {
-    line-height: 1.5;        /* Tighter line height */
-    color: var(--text);      
-    font-size: 0.95rem;      /* Slightly smaller font */
-    margin-bottom: 0.5rem;   /* Reduced bottom margin */
+    line-height: 1.4;        /* Tighter line height */
+    .project-card h3 {
+    margin: 0.1rem 0 0.25rem 0;  /* Tighter top margin */
+    font-size: 0.95rem;          /* Smaller heading */
+    line-height: 1.2;            /* Tighter line height */
+    } 
+    margin: 0.25rem 0;       /* Reduced vertical margins */
     white-space: normal;     
     word-wrap: break-word;   
   }
@@ -435,18 +439,13 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   /* Show mobile screenshots on mobile and hide desktop screenshots */
   .project-image {
     width: 100%;
-    margin-bottom: 0.75rem;
-    border-radius: 8px;
+    margin-bottom: 0.5rem;   /* Reduced from 0.75rem */
+    border-radius: 6px;      /* Slightly smaller radius */
     overflow: hidden;
     height: auto;
-    min-height: auto;
+    max-height: 150px;       /* Limit max height */
     background: transparent;
   }
-  
-  .desktop-screenshot {
-    display: none;
-  }
-  
   .mobile-screenshot {
     display: block;
     width: 100%;
