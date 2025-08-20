@@ -364,13 +364,13 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   display: block;             /* Ensure it's on its own line */
 }
 
-/* FEATURED PROJECT SECTION */
-.featured-project {
+/* PORTFOLIO FEATURED PROJECTS */
+.portfolio .featured-project {
   padding: 1.5rem 0;
 }
 
-/* Base card styles - matches CTA style */
-.fp-card {
+/* Portfolio project card - matches CTA style */
+.portfolio .fp-card {
   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
   border-radius: 8px;
@@ -383,7 +383,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 /* Subtle pattern overlay */
-.fp-card::before {
+.portfolio .fp-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -397,20 +397,19 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 /* Hide media on all views */
-.fp-media {
+.portfolio .fp-media {
   display: none;
 }
 
 /* Content area */
-.fp-body {
+.portfolio .fp-body {
   position: relative;
   z-index: 1;
-  max-width: 800px;
-  margin: 0 auto;
+  padding: 0;
 }
 
 /* Project title */
-.fp-body h3 {
+.portfolio .fp-body h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: white;
@@ -419,7 +418,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 /* Project description */
-.fp-body p {
+.portfolio .fp-body p {
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 1.5rem;
   line-height: 1.6;
@@ -427,7 +426,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
 }
 
 /* CTA Button */
-.fp-cta {
+.portfolio .fp-cta {
   display: inline-block;
   background: white;
   color: #1e3c72;
@@ -440,7 +439,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.fp-cta:hover {
+.portfolio .fp-cta:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
   background: rgba(255, 255, 255, 0.95);
@@ -452,21 +451,21 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Featured project card mobile styles */
-  .fp-card {
+  /* Portfolio project card mobile styles */
+  .portfolio .fp-card {
     padding: 1.5rem 1.25rem;
     margin: 0 1rem;
   }
   
-  .fp-body h3 {
+  .portfolio .fp-body h3 {
     font-size: 1.3rem;
   }
   
-  .fp-body p {
+  .portfolio .fp-body p {
     font-size: 0.95rem;
   }
   
-  .fp-cta {
+  .portfolio .fp-cta {
     width: 100%;
     padding: 0.7rem 1rem;
   }
