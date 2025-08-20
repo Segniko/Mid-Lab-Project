@@ -722,8 +722,13 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   
   .education-table td {
     position: relative;
-    padding-left: 40%;
+    padding: 0.8rem 0.8rem 0.8rem 40%;
     border-bottom: 1px solid var(--border);
+    min-height: 3.5rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem; /* Slightly smaller font for better fit */
+    line-height: 1.4; /* Better line height for mobile */
   }
   
   .education-table td:last-child {
@@ -733,10 +738,15 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   .education-table td::before {
     content: attr(data-label);
     position: absolute;
-    left: 1rem;
-    width: 35%;
+    left: 0.8rem;
+    width: 38%;
     font-weight: 600;
     color: var(--primary);
+    padding-right: 0.8rem;
+    box-sizing: border-box;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    font-size: 0.85rem; /* Slightly smaller label text */
   }
   
   /* Add data-labels for mobile view */
