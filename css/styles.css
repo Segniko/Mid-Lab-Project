@@ -422,11 +422,14 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
     text-align: left;  /* Ensure text is left-aligned */
   }
   
-  /* Allow text to wrap naturally in project descriptions */
+  /* Style project descriptions to match about content */
   .project-card p {
-    white-space: normal;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
+    line-height: 1.7;       
+    color: var(--text);      
+    font-size: 1.05rem;      
+    margin-bottom: 1rem;     
+    white-space: normal;     
+    word-wrap: break-word;   
   }
   
   /* Hide project images on mobile */
