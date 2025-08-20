@@ -422,11 +422,11 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
     text-align: left;  /* Ensure text is left-aligned */
   }
   
-  /* Prevent text wrapping in project descriptions */
+  /* Allow text to wrap naturally in project descriptions */
   .project-card p {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
   
   /* Hide project images on mobile */
