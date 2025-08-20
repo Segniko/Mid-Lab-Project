@@ -419,6 +419,7 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
     flex-direction: column;  /* Stack children vertically */
     padding: 1rem;
     gap: 0.5rem;
+    text-align: left;  /* Ensure text is left-aligned */
   }
   
   /* Hide project images on mobile */
