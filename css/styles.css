@@ -422,6 +422,13 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
     text-align: left;  /* Ensure text is left-aligned */
   }
   
+  /* Prevent text wrapping in project descriptions */
+  .project-card p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
   /* Hide project images on mobile */
   .project-image {
     display: none;
