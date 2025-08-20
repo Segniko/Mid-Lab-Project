@@ -63,7 +63,7 @@ body {
 
 /* Navigation styles */
 header {
-  display: flex;                      /* Use flexbox for layout */
+  display: flex;                      /* flexbox for layout */
   justify-content: space-between;     /* Space items evenly */
   align-items: center;               /* Center items vertically */
   padding: 0.5rem 1rem;              /* Add padding around header content */
@@ -73,7 +73,7 @@ header {
 
 /* Logo container */
 .header-logo {
-  display: flex;                      /* Use flexbox for layout */
+  display: flex;                      /* flexbox for layout */
   align-items: center;               /* Center items vertically */
   gap: 0.5rem;                       /* Space between logo and text */
 }
@@ -95,7 +95,7 @@ header {
 
 /* Navigation links container */
 .nav-links {
-  display: flex;                     /* Use flexbox for layout */
+  display: flex;                     /* flexbox for layout */
   gap: 1.5rem;                       /* Space between navigation items */
   list-style: none;                  /* Remove default list styling */
 }
@@ -139,7 +139,7 @@ header {
 
 /* Theme toggle switch for light/dark theme */
 .theme-checkbox {
-  position: absolute;   /* Remove from normal document flow */
+  position: absolute;   
   left: -9999px;        /* Hide the actual checkbox off-screen */
   opacity: 0;           /* Make it invisible but focusable */
 }
@@ -369,148 +369,81 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   padding: 1.5rem 0;
 }
 
-/* Base card styles */
+/* Base card styles - matches CTA style */
 .fp-card {
-  display: flex;
-  flex-direction: column; /* Stack vertically on mobile */
-  background: var(--bg-light);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  transition: var(--transition);
-  height: 100%;
-}
-
-/* Media container */
-.fp-media {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: white;
+  border-radius: 8px;
+  padding: 2rem 1.5rem;
+  text-align: center;
   position: relative;
-  width: 100%;
-  height: 180px; /* Fixed height for mobile */
-  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: var(--transition);
 }
 
-/* Project image */
-.fp-media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
+/* Subtle pattern overlay */
+.fp-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* Hide media on all views */
+.fp-media {
+  display: none;
 }
 
 /* Content area */
 .fp-body {
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Project title */
 .fp-body h3 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-  color: var(--text);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: white;
   font-weight: 700;
-  line-height: 1.3;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Project description */
 .fp-body p {
-  color: var(--text);
-  opacity: 0.9;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  flex-grow: 1;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  font-size: 1.05rem;
 }
 
-/* Tech stack tags */
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.tech-tag {
-  background: rgba(23, 111, 211, 0.1);
-  color: var(--primary);
-  padding: 0.25rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* Action buttons */
-.fp-actions {
-  display: flex;
-  gap: 0.75rem;
-  margin-top: auto;
-}
-
-.fp-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+/* CTA Button */
+.fp-cta {
+  display: inline-block;
+  background: white;
+  color: #1e3c72;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.fp-link.primary {
-  background: var(--primary);
-  color: white;
-}
-
-.fp-link.secondary {
-  border: 1px solid var(--border);
-  color: var(--text);
-}
-
-/* Hover effects */
-.fp-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.fp-card:hover .fp-media img {
-  transform: scale(1.05);
-}
-
-.fp-link.primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-1px);
-}
-
-.fp-link.secondary:hover {
-  background: rgba(0, 0, 0, 0.02);
-  transform: translateY(-1px);
-}
-
-/* Desktop styles */
-@media (min-width: 768px) {
-  .fp-card {
-    flex-direction: row;
-    min-height: 220px;
-  }
-  
-  .fp-media {
-    width: 200px;
-    height: auto;
-    min-height: 100%;
-  }
-  
-  .fp-body {
-    padding: 1.5rem;
-  }
+.fp-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.95);
 }
 
 /* 
@@ -519,19 +452,10 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
+  /* Featured project card mobile styles */
   .fp-card {
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  }
-  
-  .fp-media {
-    height: 160px;
-    border-radius: 0;
-  }
-  
-  .fp-body {
-    padding: 1.25rem;
+    padding: 1.5rem 1.25rem;
+    margin: 0 1rem;
   }
   
   .fp-body h3 {
@@ -540,22 +464,11 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   
   .fp-body p {
     font-size: 0.95rem;
-    margin-bottom: 1rem;
   }
   
-  .tech-tag {
-    font-size: 0.7rem;
-    padding: 0.2rem 0.6rem;
-  }
-  
-  .fp-actions {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  
-  .fp-link {
-    justify-content: center;
-    padding: 0.6rem;
+  .fp-cta {
+    width: 100%;
+    padding: 0.7rem 1rem;
   }
   
   /* Stack header elements vertically */
