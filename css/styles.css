@@ -418,22 +418,12 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   .project-card {
     flex-direction: column;  /* Stack children vertically */
     padding: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
   }
   
-  /* Make the project image full width with fixed height */
+  /* Hide project images on mobile */
   .project-image {
-    width: 100%;
-    height: 180px;          /* Fixed height for consistency */
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  
-  /* Ensure images fill their container */
-  .project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    display: none;
   }
   
   /* Stack header elements vertically */
