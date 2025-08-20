@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing my skills, projects, and profe
 
 ```
 ├── css/
-│   └── styles.css          # Main stylesheet
+│   └── styles.css         # Main stylesheet
 ├── images/                # Project images and assets
 ├── about.html             # About me page
 ├── contact.html           # Contact form page
