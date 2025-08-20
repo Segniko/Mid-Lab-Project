@@ -364,85 +364,48 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
   display: block;             /* Ensure it's on its own line */
 }
 
-/* PORTFOLIO FEATURED PROJECTS */
-.portfolio .featured-project {
-  padding: 1.5rem 0;
+/* FEATURED PROJECT SECTION */
+.featured-project {
+  padding: 1.5rem 0;  /* Vertical padding for section spacing */
 }
 
-/* Portfolio project card - matches CTA style */
-.portfolio .fp-card {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-  color: white;
-  border-radius: 8px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: var(--transition);
+/* Featured project card container */
+.fp-card {
+  display: flex;                /* Use flexbox for layout */
+  gap: 1rem;                   /* Space between media and content */
+  align-items: stretch;        /* Stretch items to match height */
+  background: var(--bg-light); /* Use theme background */
+  border: 1px solid var(--border); /* Subtle border */
+  border-radius: 8px;          /* Rounded corners */
+  overflow: hidden;            /* Hide overflowing content */
+  box-shadow: var(--shadow);   /* Add depth with shadow */
+  transition: var(--transition); /* Smooth hover effects */
 }
 
-/* Subtle pattern overlay */
-.portfolio .fp-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.3;
-  pointer-events: none;
+/* Featured project media container */
+.fp-media {
+  width: 160px;  /* Fixed width for the media area */
+  background: linear-gradient(135deg, #dbeafe 0%, #93c5fd 100%); /* Subtle blue gradient */
+  min-height: 100%; /* Ensure it stretches to full height */
+  display: flex;    /* For centering content */
+  align-items: center; /* Vertical centering */
+  justify-content: center; /* Horizontal centering */
 }
 
-/* Hide media on all views */
-.portfolio .fp-media {
-  display: none;
+/* Featured project content area */
+.fp-body {
+  padding: 1rem;   /* Inner spacing */
+  flex: 1;         /* Take remaining space */
+  display: flex;    /* For layout control */
+  flex-direction: column; /* Stack children vertically */
 }
 
-/* Content area */
-.portfolio .fp-body {
-  position: relative;
-  z-index: 1;
-  padding: 0;
-}
-
-/* Project title */
-.portfolio .fp-body h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: white;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-/* Project description */
-.portfolio .fp-body p {
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  font-size: 1.05rem;
-}
-
-/* CTA Button */
-.portfolio .fp-cta {
-  display: inline-block;
-  background: white;
-  color: #1e3c72;
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.portfolio .fp-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 0.95);
+/* Featured project heading */
+.fp-body h3 {
+  margin-bottom: 0.5rem;  /* Space below heading */
+  font-size: 1.1rem;     /* Slightly larger than body text */
+  color: var(--text);    /* Use theme text color */
+  font-weight: 600;      /* Semi-bold for emphasis */
 }
 
 /* 
@@ -451,23 +414,15 @@ body[data-theme="light"] .nav-link.theme-toggle::before {
  * Adjusts layout and spacing for smaller screens
  */
 @media screen and (max-width: 768px) {
-  /* Portfolio project card mobile styles */
-  .portfolio .fp-card {
-    padding: 1.5rem 1.25rem;
-    margin: 0 1rem;
+  /* Stack featured project card vertically on mobile */
+  .fp-card {
+    flex-direction: column;  /* Stack children vertically */
   }
   
-  .portfolio .fp-body h3 {
-    font-size: 1.3rem;
-  }
-  
-  .portfolio .fp-body p {
-    font-size: 0.95rem;
-  }
-  
-  .portfolio .fp-cta {
-    width: 100%;
-    padding: 0.7rem 1rem;
+  /* Make the project media section full width with fixed height */
+  .fp-media {
+    width: 100%;            /* Full width of container */
+    height: 120px;          /* Fixed height for consistency */
   }
   
   /* Stack header elements vertically */
